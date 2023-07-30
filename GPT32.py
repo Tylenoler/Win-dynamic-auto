@@ -1,6 +1,8 @@
 import ctypes
 import os
+import sys
 import time
+import ctypes
 
 def change_wallpaper(image_path):
     # 使用ctypes库加载user32.dll
@@ -37,15 +39,16 @@ def main():
 
     # 根据当前时间选择要设置的壁纸
     if current_time.tm_hour < 12:
-        image_path = "F:\GITHUBCODELIBRARY\Win-dynamic-auto\APPLEWALL/1Early.jpg"
+        image_path = "F:\GITHUBCODELIBRARY\Win-dynamic-auto\APPLEWALL/4Noon.jpg"
     elif current_time.tm_hour < 18:
-        image_path = "F:\GITHUBCODELIBRARY\Win-dynamic-auto\APPLEWALL/1Early.jpg"
+        image_path = "F:\GITHUBCODELIBRARY\Win-dynamic-auto\APPLEWALL/4Noon.jpg"
     else:
-        image_path = "F:\GITHUBCODELIBRARY\Win-dynamic-auto\APPLEWALL/1Early.jpg"
+        image_path = "F:\GITHUBCODELIBRARY\Win-dynamic-auto\APPLEWALL/4Noon.jpg"
 
     # 获取当前壁纸路径
     current_wallpaper = get_wallpaper_path()
-
+    print("当前壁纸路径",current_wallpaper)
+    print("更改壁纸路径",image_path)
     # 检查当前壁纸是否与要设置的壁纸相同
     if os.path.abspath(image_path) != current_wallpaper:
         # 更改壁纸
@@ -56,7 +59,7 @@ def main():
 
     # 获取所有桌面的数量
     desktop_count = ctypes.windll.user32.GetSystemMetrics(80)
-
+    print("桌面数量：",desktop_count)
     # 遍历所有桌面并设置壁纸
     for i in range(desktop_count):
         # 设置当前桌面
@@ -70,3 +73,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
